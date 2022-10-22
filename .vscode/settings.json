@@ -1,0 +1,33 @@
+{
+	"C_Cpp.errorSquiggles": "Enabled",
+	"files.associations": {
+		"pspkernel.h": "c",
+		"pspuser.h": "c",
+		"pspkerneltypes.h": "c",
+		"psptypes.h": "c",
+		"cmath": "cpp"
+	},
+	"VsCodeTaskButtons.tasks": [
+		// {
+		// 	"label": "Label that appears in the taskbar",
+		// 	"task": "The vscode task to execute",
+		// 	"tooltip": "Optional tooltip to show when hovering over the button (defaults to task name)",
+		// }
+		{
+			"label": "make",
+			"task": "make",
+		},
+		{
+			"label": "clean",
+			"task": "clean",
+		},
+		{
+			"label": "copy",
+			"task": "copy",
+		},
+		{
+			"label": "all",
+			"task": "all",
+		},
+	]
+}
