@@ -9,6 +9,7 @@ class DebugInfo {
 	public:
 		bool print;
 		Point analog = Point(0, 0);
+		float framerate;
 		DebugInfo() {
 			print = false;
 			pspDebugScreenInit();
@@ -17,6 +18,6 @@ class DebugInfo {
 			if(!print)
 				return;
 			pspDebugScreenSetXY(0, 2);
-			pspDebugScreenPrintf("Analog %f|%f\nFPS: %f", analog.x, analog.y, sceDisplayGetFramePerSec());
+			pspDebugScreenPrintf("Analog %f|%f\nFPS: %f\t counted: %f", analog.x, analog.y, sceDisplayGetFramePerSec(), framerate);
 		}
 };

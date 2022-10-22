@@ -1,7 +1,7 @@
 SHELL := /bin/sh
 
 TARGET = sprite
-OBJS = src/graphic.o src/main.o src/callbacks.o src/vram.o texture.o
+OBJS = src/graphic.o src/main.o src/callbacks.o src/vram.o texture.o src/Snake.o
 
 INCDIR = "/usr/include/c++/11.2.1/" "inc"
 CFLAGS = -Wall -O3

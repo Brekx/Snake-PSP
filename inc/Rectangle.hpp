@@ -19,4 +19,13 @@ struct Rectangle {
 		p3 = Point(x3, y3);
 		p4 = Point(x4, y4);
 	}
+	Rectangle(Point position, Point size) {
+		p1 = position;
+		p2.x = position.x + size.x;
+		p2.y = position.y;
+		p3.x = position.x + size.x;
+		p3.y = position.y + size.y;
+		p4.x = position.x;
+		p4.y = position.y + size.y;
+	}
 };

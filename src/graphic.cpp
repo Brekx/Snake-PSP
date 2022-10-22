@@ -1,6 +1,8 @@
 #include <pspdisplay.h>
 #include <pspgu.h>
 #include <pspgum.h>
+#include <time.h>
+#include <psprtc.h>
 
 #include "graphic.hpp"
 #include "vram.h"
@@ -45,6 +47,7 @@ void Graphic::init() {
 
 	sceGuFinish();
 	sceGuDisplay(GU_TRUE);
+	sceRtcGetCurrentTick(&clock);
 }
 
 void Graphic::beginDraw() {
@@ -66,6 +69,9 @@ void Graphic::endDraw() {
 	sceGuSync(0, 0);
 	sceDisplayWaitVblankStart();
 	sceGuSwapBuffers();
+	u64 tmp = clock;
+	sceRtcGetCurrentTick(&clock);
+	framerate = (float)sceRtcGetTickResolution()/(clock-tmp);
 }
 
 void Graphic::drawImageFromTex(Rectangle location, Rectangle tex_location) {
@@ -118,4 +124,8 @@ void Graphic::drawRectangle(Rectangle rectangle, unsigned int color) {
 
 void Graphic::terminate() {
 	sceGuTerm();
+}
+
+float Graphic::getFramerate() {
+	return framerate;
 }

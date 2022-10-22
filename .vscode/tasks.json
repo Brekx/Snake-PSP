@@ -33,7 +33,7 @@
 		{
 			"label": "copy",
 			"type": "shell",
-			"command": "until [ -d /Volumes/PSPCARD ]; do sleep 1; done && cp EBOOT.PBP /Volumes/PSPCARD/PSP/GAME/Snake/ && sleep 2 && diskutil unmount /Volumes/PSPCARD",
+			"command": "until [ -d /Volumes/PSPCARD ]; do sleep 1; done && sleep 1 && cp EBOOT.PBP /Volumes/PSPCARD/PSP/GAME/Snake/ && sleep 1 && diskutil unmount /Volumes/PSPCARD",
 			"options": {
 				"cwd": "${workspaceFolder}"
 			},
