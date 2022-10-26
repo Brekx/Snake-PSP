@@ -1,12 +1,13 @@
 SHELL := /bin/sh
 
-TARGET = sprite
-OBJS = src/graphic.o src/main.o src/callbacks.o src/vram.o texture.o src/Snake.o
+TARGET = Snake
+OBJS = src/graphic.o src/main.o src/callbacks.o src/vram.o texture.o src/Snake.o src/Drawable.o src/Apple.o
 
 INCDIR = "/usr/include/c++/11.2.1/" "inc"
-CFLAGS = -Wall -O3
-CXXFLAGS = $(CFLAGS) -fno-rtti -fexceptions -std=c++17
+CFLAGS = -Wall -O3 -g
+CXXFLAGS = $(CFLAGS) -fno-rtti -fexceptions -std=c++17 -g
 ASFLAGS = $(CFLAGS)
+BUILD_PRX = 1
 
 LIBDIR =
 LDFLAGS =

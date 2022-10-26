@@ -8,8 +8,9 @@
 #include "graphic.hpp"
 #include "DebugInfo.hpp"
 #include "Snake.hpp"
+#include "Apple.hpp"
 
-PSP_MODULE_INFO("Cube Sample", 0, 1, 1);
+PSP_MODULE_INFO("Snake", 0, 1, 1);
 PSP_MAIN_THREAD_ATTR(THREAD_ATTR_USER | PSP_THREAD_ATTR_VFPU);
 
 int main(int argc, char* argv[])
@@ -21,6 +22,7 @@ int main(int argc, char* argv[])
 	unsigned int padbuffer;
 
 	Snake s;
+	Apple a = Apple(Point(10, 10), 20);
 	
 	g.init();
 	sceCtrlSetSamplingCycle(0);
@@ -37,8 +39,12 @@ int main(int argc, char* argv[])
 		}
 
 		s.respond(pad, g.getFramerate());
+		a.respond(g.getFramerate());
 
+		if(a.do_collide(s.get_head()))
+			a.eat();
 		g.beginDraw();
+		a.draw(&g);
 		s.draw(&g);
 		g.endDraw();
 

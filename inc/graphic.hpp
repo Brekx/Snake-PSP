@@ -17,6 +17,7 @@ class Graphic : public DrawingInterface {
 		void endDraw();
 		void drawImageFromTex(Rectangle location, Rectangle tex_location);
 		void drawRectangle(Rectangle rectangle, unsigned int color);
+		void drawPolygon(Point *point, int count, unsigned int color);
 		void terminate();
 		float getFramerate();
 };

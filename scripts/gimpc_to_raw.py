@@ -1,4 +1,5 @@
 from PIL import Image
+from math import sqrt
 
 f = open("res/texture.raw", 'wb')
 img = Image.open("res/uno.png")
@@ -13,5 +14,6 @@ for y in range(0, img.width):
 			colors += 1
 
 print("Wrote " + str(colors) + " colors")
+print("Image aka " + str(sqrt(colors/4)) + " pixels square")
 f.close()
 img.close()

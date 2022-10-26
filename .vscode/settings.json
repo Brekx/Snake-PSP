@@ -5,7 +5,8 @@
 		"pspuser.h": "c",
 		"pspkerneltypes.h": "c",
 		"psptypes.h": "c",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"vector": "cpp"
 	},
 	"VsCodeTaskButtons.tasks": [
 		// {
@@ -14,20 +15,16 @@
 		// 	"tooltip": "Optional tooltip to show when hovering over the button (defaults to task name)",
 		// }
 		{
-			"label": "make",
-			"task": "make",
-		},
-		{
 			"label": "clean",
 			"task": "clean",
-		},
-		{
-			"label": "copy",
-			"task": "copy",
 		},
 		{
 			"label": "all",
 			"task": "all",
 		},
+		{
+			"label": "make",
+			"task": "make"
+		}
 	]
 }

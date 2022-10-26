@@ -75,51 +75,76 @@ void Graphic::endDraw() {
 }
 
 void Graphic::drawImageFromTex(Rectangle location, Rectangle tex_location) {
-
 	Vertex* vertices = (Vertex*)sceGuGetMemory(4 * sizeof(Vertex));
 
 	vertices[0].x = location.p1.x;
 	vertices[0].y = location.p1.y;
+	vertices[0].z = 0;
 	vertices[0].a = tex_location.p1.x;
 	vertices[0].v = tex_location.p1.y;
 
 	vertices[1].x = location.p2.x;
 	vertices[1].y = location.p2.y;
+	vertices[1].z = 0;
 	vertices[1].a = tex_location.p2.x;
 	vertices[1].v = tex_location.p2.y;
 
 	vertices[2].x = location.p3.x;
 	vertices[2].y = location.p3.y;
+	vertices[2].z = 0;
 	vertices[2].a = tex_location.p3.x;
 	vertices[2].v = tex_location.p3.y;
 
 	vertices[3].x = location.p4.x;
 	vertices[3].y = location.p4.y;
+	vertices[3].z = 0;
 	vertices[3].a = tex_location.p4.x;
 	vertices[3].v = tex_location.p4.y;
 
-	sceGuColor(0xFF0000FF); // Red, colors are ABGR
+	sceGuColor(0xFF00000); // Red, colors are ABGR
 	sceGuDrawArray(GU_TRIANGLE_FAN, GU_TEXTURE_32BITF|GU_VERTEX_32BITF | GU_TRANSFORM_2D, 4, 0, vertices);
 }
 
 void Graphic::drawRectangle(Rectangle rectangle, unsigned int color) {
 	Vertex* vertices = (Vertex*)sceGuGetMemory(4 * sizeof(Vertex));
+	//FIXME - This memmory usage seems quite bad as we allocate space but never free it
 
 	vertices[0].x = rectangle.p1.x;
 	vertices[0].y = rectangle.p1.y;
+	vertices[0].z = 0;
+	vertices[0].a = 0;
+	vertices[0].v = 0;
 
 	vertices[1].x = rectangle.p2.x;
 	vertices[1].y = rectangle.p2.y;
+	vertices[1].z = 0;
+	vertices[1].a = 0;
+	vertices[1].v = 0;
 
 	vertices[2].x = rectangle.p3.x;
 	vertices[2].y = rectangle.p3.y;
+	vertices[2].z = 0;
+	vertices[2].a = 0;
+	vertices[2].v = 0;
 
 	vertices[3].x = rectangle.p4.x;
 	vertices[3].y = rectangle.p4.y;
+	vertices[3].z = 0;
+	vertices[3].a = 0;
+	vertices[3].v = 0;
 	sceGuTexFunc(GU_TFX_ADD, GU_TCC_RGB);
 	sceGuColor(color);
 	sceGuDrawArray(GU_TRIANGLE_FAN, GU_TEXTURE_32BITF|GU_VERTEX_32BITF | GU_TRANSFORM_2D, 4, 0, vertices);
 	sceGuTexFunc(GU_TFX_REPLACE, GU_TCC_RGBA);
+}
+
+void Graphic::drawPolygon(Point *point, int count, unsigned int color) {
+	// Vertex *verticies = (Vertex*) sceGuGetMemory(count*sizeof(Vertex));
+	// for(int i=0; i<count; i++) {
+	// 	verticies[i].x = point.x;
+	// 	verticies[i].y = point.x;
+
+	// }
 }
 
 void Graphic::terminate() {
